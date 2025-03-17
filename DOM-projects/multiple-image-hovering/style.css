@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: arial;
+  color: white;
+}
+html,body {
+  height: 100%;
+  width: 100%;
+}
+#main {
+  /* everty parent should be position reletive */
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+}
+#main .elem {
+  position: relative;
+  height: 150px;
+  width: 100%;
+  border-bottom: 2px solid white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+#main .elem h1 {
+  font-size: 8vw;
+  position: relative;
+  z-index: 2;
+  mix-blend-mode: difference;
+}
+#main .elem img {
+  position: absolute;
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  transition: all linear 0.1s;
+  opacity: 1;
+}
