@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <p class="js-display-calculations display-calculation">
+        
+        </p>
+        <p>
+            <button onclick="updateCalculations('1')">
+                1
+            </button>
+            <button onclick="updateCalculations('2')">
+                2
+            </button>
+            <button onclick="updateCalculations('3')">
+                3
+            </button>
+            <button onclick="updateCalculations(' + ')">
+                +
+            </button>
+        </p>
+        <p>
+            <button onclick="updateCalculations('4')">
+                4
+            </button>
+            <button onclick="updateCalculations('5')">
+                5
+            </button>
+            <button onclick="updateCalculations('6')">
+                6
+            </button>
+            <button onclick="updateCalculations(' - ')">
+                -
+            </button>
+        </p>
+        <p>
+            <button onclick="updateCalculations('7')">
+                7
+            </button>
+            <button onclick="updateCalculations('8')">
+                8
+            </button>
+            <button onclick="updateCalculations('9')">
+                9
+            </button>
+            <button onclick="updateCalculations(' * ')">
+                *
+            </button>
+        </p>
+        <p>
+            <button onclick="updateCalculations('0')">
+                0
+            </button>
+            <button onclick="updateCalculations('.')">
+                .
+            </button>
+            <button onclick="updateCalculations(' / ')">
+                /
+            </button>
+            <button onclick="evaluateCalculations()">
+                =
+            </button>
+        </p>
+        <p>
+            <button onclick="clearConsole()">
+                Clear
+            </button>
+        </p>
+    </div>
+<script>
+    let calculations =  localStorage.getItem('calculations') || '';
+    updateDisplayCalculations();
+    function updateCalculations(operation){
+        calculations +=  operation;
+        updateDisplayCalculations();
+        saveCalculation();
+    }
+    function evaluateCalculations(){
+        // eval should not be used im real projects
+        calculations = eval(calculations);
+        updateDisplayCalculations();
+        saveCalculation();
+    }
+    function clearConsole(){
+        calculations = '';
+        updateDisplayCalculations();
+        saveCalculation();
+    }
+    function saveCalculation() {
+        localStorage.setItem('calculations',calculations);
+    }
+    function updateDisplayCalculations(){
+        const displayCalculation = document.querySelector('.js-display-calculations');
+        displayCalculation.innerText = calculations;
+    }
+</script>
+</body>
+</html>
